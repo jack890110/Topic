@@ -1,7 +1,30 @@
-import pymssql
+import pyodbc
+# pymssql
 
-# conn = pymssql.connect(host='localhost', server="DESKTOP-URU9MLH\SQLEXPRESS",port='1433', user='Timmy', password='qazwsx!1', database='Topic_DB')
-conn = pymssql.connect(host='localhost', server="DESKTOP-URU9MLH\SQLEXPRESS",port='1433', user='Timmy', password='qazwsx!1', database='Topic_DB')
+# # conn = pymssql.connect(host='localhost', server="DESKTOP-URU9MLH\SQLEXPRESS",port='1433', user='Timmy', password='qazwsx!1', database='Topic_DB')
+# conn = pyodbc.connect(host='localhost', server="DESKTOP-URU9MLH\SQLEXPRESS",port='1433', user='Timmy', password='qazwsx!1', database='Topic_DB')
+# # conn = pymssql.connect(host='localhost', server="DESKTOP-URU9MLH\SQLEXPRESS",port='1433', user='Timmy', password='qazwsx!1', database='abcd')
+
+server = 'DESKTOP-URU9MLH\SQLEXPRESS' 
+database = 'Topic_DB' 
+username = 'Timmy' 
+password = 'qazwsx!1' 
+cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password)
+cursor = cnxn.cursor()
+
+cursor.execute(
+    "INSERT INTO [Account_Number] ([email],[ID_number]) VALUES ('{0}', '{1}')".format(
+        'roo314t',
+        'rootffw',
+    )
+)
+
+row = cursor.fetchone() 
+while row: 
+    print(row[0])
+    row = cursor.fetchone()
+
+os.exit()
 cur = conn.cursor()
 cursor = conn.cursor()
 

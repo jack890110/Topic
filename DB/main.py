@@ -1,6 +1,7 @@
 #Python宣告使用的套件方式，不可刪除
 from flask import Flask, render_template , request , make_response, jsonify
-import pymssql
+# import pymssql
+import pyodbc
 
 #導入db.py內的SQL基本語法副程式，減少程式碼重複
 import db
@@ -179,7 +180,7 @@ def data():
     email = request_data['email'] #email帳號
     password = request_data['password'] #使用者密碼
     #以下程式碼是註冊的使用者帳號相同 測試完成可以的
-    conn = pymssql.connect(host='localhost', server="DESKTOP-URU9MLH\SQLEXPRESS",port='1433', user='Timmy', password='qazwsx!1', database='Topic_DB')
+    conn = pyodbc.connect(host='localhost', server="DESKTOP-URU9MLH\SQLEXPRESS",port='1433', user='Timmy', password='qazwsx!1', database='Topic_DB')
     cur = conn.cursor()
     cursor = conn.cursor()
     #尋找是否有相同的電子郵件，如果有的話res陣列會產生內容，沒有則為0，在下面的if判斷判斷是否有陣列內容，有陣列內容回報電子郵件已經註冊禁止註冊帳號
