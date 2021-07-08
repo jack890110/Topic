@@ -1,19 +1,13 @@
-import pymssql
 import pyodbc
 #對資料庫進行寫入及編輯的副程式
 def query(sql):
     try:
         # SQL Server電腦位置及帳號密碼等
-        # conn = pymssql.connect(host='localhost', server="DESKTOP-URU9MLH\SQLEXPRESS",port='1433', user='Timmy', password='qazwsx!1', database='Topic_DB')
-        # conn = pyodbc.connect(host='localhost', server="DESKTOP-URU9MLH\SQLEXPRESS",port='1433', user='Timmy', password='qazwsx!1', database='Topic_DB')
-
         server = 'DESKTOP-URU9MLH\SQLEXPRESS'
         database = 'Topic_DB'
         username = 'Timmy'
         password = 'qazwsx!1'
         conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password)
-
-
         
         #下2行為對資料庫進行操作
         cur = conn.cursor()
@@ -32,9 +26,6 @@ def query(sql):
 #對資料庫進行讀取(並顯示出資料)的副程式
 def select(sql):
     try:
-        # conn = pymssql.connect(host='localhost', server="DESKTOP-URU9MLH\SQLEXPRESS",port='1433', user='Timmy', password='qazwsx!1', database='Topic_DB')
-        # conn = pyodbc.connect(host='localhost', server="DESKTOP-URU9MLH\SQLEXPRESS",port='1433', user='Timmy', password='qazwsx!1', database='Topic_DB')
-     
         server = 'DESKTOP-URU9MLH\SQLEXPRESS'
         database = 'Topic_DB'
         username = 'Timmy'
