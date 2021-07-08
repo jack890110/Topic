@@ -1,0 +1,179 @@
+.introduction-main{
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: -998;
+    margin-top: -10px;
+    height: 50%;
+    width:100%;
+    background-color: rgba(255, 255, 255, 0.616);
+
+    margin: 0;
+    font-family: var(--bs-font-sans-serif); 
+    font-size: 1rem; 
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    
+    --bs-font-sans-serif: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
+.btn{
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+
+
+
+.main-image {
+    position: fixed;
+    /* 強制將圖片設定以下位置 */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -999;
+    /* 將圖片設定為最底層 */
+    /* 下3行為強制將圖片最小寬度及高度，如果顯示畫面過小時直接將超出邊界裁減 */
+    min-height: 100%;
+    min-width: 1000px;
+    width: 100%;
+    /* 下4行讓套用的區域不可反白(依照不同的瀏覽器設定語法不同) */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+/* 下面6行為強制將各種橫向解析度圖片置中的語法 */
+
+@media screen and (max-width: 1000px) {
+    /* 此語法為偵測瀏覽器螢幕寬度解析度 */
+    img.main-image {
+        left: 50%;
+        margin-left: -500px;
+    }
+}
+
+/* 立即加入按鈕 */
+
+.join-btn {
+  border: 0;
+  background-color: #ffb117;
+  color: #000000;
+  border-radius: 10px;
+  /* 按鈕圓弧 */
+  box-shadow: 0px 0 8px -4px #000;
+  /* 陰影特效 */
+  transition-duration: 0.2s;
+  /* 滑入延遲特效 */
+  width: 120px;
+  height: 100px;
+  text-decoration: none;
+  /* padding: .700rem .50rem; */
+}
+
+
+/* 立即註冊按鈕滑入特效 */
+
+.join-btn:hover {
+  color: #000;
+  background-color: #dd9a15;
+  cursor: pointer;
+  /* 將滑鼠移入一般手勢改為變為選擇連線 */
+}
+
+
+
+
+
+
+
+/* 下方為使用Bootstrap的JS及CSS */
+.container {
+    max-width: 960px;
+  }
+  
+  /*
+   * Custom translucent site header
+   */
+  
+  .site-header {
+    background-color: rgba(0, 0, 0, .85);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+  }
+  .site-header a {
+    color: #8e8e8e;
+    transition: color .15s ease-in-out;
+  }
+  .site-header a:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  /*
+   * Dummy devices (replace them with your own or something else entirely!)
+   */
+  
+  .product-device {
+    position: absolute;
+    right: 10%;
+    bottom: -30%;
+    width: 300px;
+    height: 400px;
+    background-color: #333;
+    border-radius: 21px;
+    transform: rotate(30deg);
+  }
+  
+  .product-device::before {
+    position: absolute;
+    top: 10%;
+    right: 10px;
+    bottom: 10%;
+    left: 10px;
+    content: "";
+    background-color: rgba(255, 255, 255, .1);
+    border-radius: 5px;
+  }
+  
+  .product-device-2 {
+    top: -25%;
+    right: auto;
+    bottom: 0;
+    left: 5%;
+    background-color: #e5e5e5;
+  }
+  
+  
+  /*
+   * Extra utilities
+   */
+  
+  .flex-equal > * {
+    flex: 1;
+  }
+  @media (min-width: 768px) {
+    .flex-md-equal > * {
+      flex: 1;
+    }
+  }
+  

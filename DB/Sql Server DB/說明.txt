@@ -1,0 +1,2 @@
+請從SQL Server資料庫匯入此檔案，直接以SQL Server開啟此檔案，修改檔案路徑為SQL Server安裝位置
+然後按執行後就會匯入進來

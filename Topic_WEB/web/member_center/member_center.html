@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<!-- ...註解 ... -->
+
+<html lang="zh-tw" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>AI學習網站 -會員中心</title>
+    <link rel="stylesheet" href="http://127.0.0.1:5500/material/css/template.css" />
+    <link rel="stylesheet" href="http://127.0.0.1:5500/material/css/member_center/member_center.css" />
+
+    <!-- 使用Bootstrap的JS及CSS -->
+    <script src="http://127.0.0.1:5500/material/js/bootstrap.bundle.min.js"></script>
+    <link href="http://127.0.0.1:5500/material/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <script src="http://127.0.0.1:5500/material/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        $(function() {
+            /*公共部分，頂部導航列*/
+            $(".headerpage").load("http://127.0.0.1:5500/web/header.html");
+            $(".footerpage").load("http://127.0.0.1:5500/web/footer.html");
+        });
+    </script>
+
+</head>
+
+<body>
+
+    <header class="headerpage"></header>
+
+
+    <div class="main-image"><img class="main-image" src="http://127.0.0.1:5500/material/image/main image/mainimg.jpg"></div>
+    <table style="position: fixed;top:80px;width:100%;height:100%;border: 0px;left:0px">
+        <tr>
+            <td align="center" valign="middle">
+                <div class="login_layout">
+                    <form style="text-align: center;">
+                        <!-- <img class="mb-4" src="http://127.0.0.1:5500/material/image/logo(translucent).png" alt="" width="72" height="57"> -->
+                        <h1 class="h3 mb-3 fw-normal" style="color: #ffff;">請登入</h1>
+
+                        <div class="form-floating form-table">
+                            <input type="email" class="form-control form-login" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput" class="form-font">身分證字號</label>
+                            <br>
+                        </div>
+                        <div class="form-floating form-table">
+                            <input type="password" class="form-control form-login" id="floatingPassword" placeholder="Password">
+                            <label for="floatingPassword">密碼</label>
+                        </div>
+
+                        <div class="checkbox mb-3">
+                            <label>
+              <input type="checkbox" value="remember-me"> 記住我
+            </label>
+                        </div>
+                        <button class="logo_button" type="submit">登入</button>
+                    </form>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <script src="http://127.0.0.1:5500/material/js/header/browser.min.js"></script>
+    <script src="http://127.0.0.1:5500/material/js/header/breakpoints.min.js"></script>
+    <script src="http://127.0.0.1:5500/material/js/header/main.js"></script>
+
+
+</body>
+
+</html>

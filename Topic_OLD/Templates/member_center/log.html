@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<!-- ...註解 ... -->
+
+<html lang="zh-tw" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>AI學習網站 -會員中心</title>
+    <link rel="stylesheet" href="{{ url_for('static',     filename='css/template.css') }}">
+</head>
+<body>
+    <header class="menu">
+        <table width="100%" height="85px" border="0">
+            <tbody>
+                <tr>
+                    <td width="11%" nowrap="nowrap">
+                        <span class="logo">
+                            <a href="\main"><img src="..\static\image\lo.png" width="162" height="80" /></a>
+                        </span>
+                    </td>
+                    <td width="6%" nowrap="nowrap">
+                        <!-- 探索選單 -->
+                        <div class="sample-menu-style dropdown-menu">
+                            <button tabindex="0" onclick="return true" style="width:80px;height:50px;">探索 <img src="..\static\image\open.png" class="open-image" style="height:15px;width:15px;"></button>
+                            <!-- 探索選單內的項目 -->
+                            <ul>
+                                <li><a href="\elementary" onclick="sampleMenu(this)">國小</a></li>
+                                <li><a href="\intermediate" onclick="sampleMenu(this)">國中</a></li>
+                                <li><a href="#" onclick="sampleMenu(this)">Last Item</a></li>
+                            </ul>
+                        </div>
+
+                    </td>
+                    <td width="28%" nowrap="nowrap">
+
+                        <!-- 搜尋區域 -->
+                        <form id="form1" name="form1" method="post">
+
+                            <!-- 搜尋框 -->
+                            <input type="search" style="width:400px;height:30px" class="search-bar" placeholder="您想學習什麼?">
+
+                            <!-- 搜尋按鈕 -->
+                            <button type="button" class="search-button" style="width:30px;height:30px"><img src="..\static\image\serach.png" height="20" width="20"></button>
+                        </form>
+
+                    </td>
+                    <!-- 空白保留區域按鈕 -->
+                    <td width="45%" nowrap="nowrap"></td>
+
+                    <!-- 登入按鈕 -->
+                    <td width="3%" nowrap="nowrap">
+                        <a href="\login" style="color:#000000;text-decoration:none;">登入</a>
+                    </td>
+
+                    <!-- 立即加入(註冊)按鈕 -->
+                    <td width="7%" align="center" nowrap="nowrap">
+                        <a href="\login"><input class="register" type="button" value="立即加入" name="register" style="width:100px;height:50px;"></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </header>
+	
+	<br>
+	<br>
+	<br>
+	<br>
+
+123
+	
+</body>
+</html>

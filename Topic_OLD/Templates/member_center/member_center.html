@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<!-- ...註解 ... -->
+
+<html lang="zh-tw" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>AI學習網站 -會員中心</title>
+    <link rel="stylesheet" href="{{ url_for('static',     filename='css/template.css') }}">
+
+
+</head>
+
+<body>
+    <script src="js/jquery-3.3.1.js" type="text/javascript" charset="utf-8">
+        $(function() {
+            /*公共部分
+             * 導航欄
+             * footer CopyRight
+             */
+            $(".headerpage").load("header.html");
+            $(".footerpage").load("footer.html");
+        });
+    </script>
+    <header class="headerpage"></header>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <form method="post" action="\loo">
+        使用者名稱:<input type="text" id="user_id" name="user_id"> 密碼:
+        <input type="password" id="password" name="password">
+        <input type="submit" value="登入">
+        <br><a href="/member_center/register" style="color:#000000;text-decoration:none;">註冊</a>
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,152 @@
+.main-body {
+    overflow-y: hidden;
+    /* 關閉首頁的直向卷軸設定 */
+}
+
+
+/* 首頁的淡入特效設定 */
+
+body {
+    animation: fadeInAnimation ease 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/* 首頁的背景圖片設定 */
+
+.main-image {
+    position: fixed;
+    /* 強制將圖片設定以下位置 */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -999;
+    /* 將圖片設定為最底層 */
+    /* 下3行為強制將圖片最小寬度及高度，如果顯示畫面過小時直接將超出邊界裁減 */
+    min-height: 100%;
+    min-width: 1000px;
+    width: 100%;
+    /* 下4行讓套用的區域不可反白(依照不同的瀏覽器設定語法不同) */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+
+/* 下面6行為強制將各種橫向解析度圖片置中的語法 */
+
+@media screen and (max-width: 1000px) {
+    /* 此語法為偵測瀏覽器螢幕寬度解析度 */
+    img.main-image {
+        left: 50%;
+        margin-left: -500px;
+    }
+}
+
+.square-frame {
+    position: fixed;
+    /* 強制將首頁左側黑方塊設定以下位置 */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    /* background-color: #000000; */
+    background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0.644) 30%, rgba(0, 0, 0, 0.555) 80%, rgba(0, 0, 0, 0) 100%);
+    height: 100%;
+    width: 50%;
+    z-index: -998;
+    /* 將圖片設定為最底層 */
+    /* 下4行讓套用的區域不可反白(依照不同的瀏覽器設定語法不同) */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.main-title {
+    position: fixed;
+    /* 強制將首頁文字設定以下位置 */
+    top: 35%;
+    left: 5%;
+    bottom: 0;
+    /* background-color: #ffffff; */
+    color: #ffffff;
+    font-size: 30pt;
+    height: 300px;
+    width: 500px;
+    z-index: -997;
+}
+
+.introduction-button {
+    width: 100px;
+    height: 40px;
+    border: 0;
+    background-color: rgb(68, 73, 86);
+    color: #ffffff;
+    border-radius: 10px;
+    /* 按鈕圓弧 */
+    box-shadow: 0px 0 8px -4px #000;
+    /* 陰影特效 */
+    transition-duration: 0.2s;
+    /* 滑入延遲特效 */
+    cursor: pointer;
+    /* 將滑鼠移入一般手勢改為變為選擇連線 */
+    border: 3px solid;
+    border-color: #ffffff;
+}
+
+.introduction-button:hover {
+    color: #000;
+    background-color: #ffffff;
+    border: 3px solid;
+    border-color: rgb(68, 73, 86);
+    cursor: pointer;
+    /* 將滑鼠移入一般手勢改為變為選擇連線 */
+}
+
+
+/* 下面10行為強制將解析度較小的裝置首頁的字體大小及介紹按鈕縮小的語法 */
+
+
+/* 下面6行為強制將各種橫向解析度圖片置中的語法 */
+
+@media all and (min-width:10px) and (max-width: 800px) {
+    .main-title {
+        font-size: 15pt;
+        width: 100%;
+        left: 0;
+        text-align: center;
+    }
+    .introduction-button {
+        width: 60px;
+        height: 40px;
+        font-size: 5pt;
+        margin-top: 10px;
+    }
+    .square-frame {
+        /* 強制將圖片設定以下位置 */
+        width: 100%;
+        background-color: black;
+        opacity: 0.8;
+    }
+}
+
+@media all and (min-width:800px) and (max-width: 1100px) {
+    /* 下面6行為強制將各種橫向解析度圖片置中的語法 */
+    .square-frame {
+        /* 強制將圖片設定以下位置 */
+        width: 80%;
+        background: linear-gradient(90deg, rgb(0, 0, 0) 0px, rgba(0, 0, 0, 0.644) 30%, rgba(0, 0, 0, 0.644) 50%, rgba(0, 0, 0, 0) 100%);
+    }
+}

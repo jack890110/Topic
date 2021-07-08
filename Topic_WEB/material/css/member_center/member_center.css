@@ -1,0 +1,118 @@
+.main-image {
+    position: fixed;
+    /* 強制將圖片設定以下位置 */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -999;
+    /* 將圖片設定為最底層 */
+    /* 下3行為強制將圖片最小寬度及高度，如果顯示畫面過小時直接將超出邊界裁減 */
+    min-height: 100%;
+    min-width: 1000px;
+    width: 100%;
+    /* 下4行讓套用的區域不可反白(依照不同的瀏覽器設定語法不同) */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.logo_button {
+    width: 80px;
+    line-height: 1.5;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    padding: .5rem 1rem;
+    /* font-size: 1.25rem; */
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(68, 73, 86);
+    border: 2px solid;
+    border-color: #ffffff;
+    box-shadow: 0px 0 8px -4px;
+    color: #ffffff;
+}
+
+.logo_button:hover {
+    color: #000;
+    background-color: #ffffff;
+    border: 2px solid;
+    border-color: rgb(68, 73, 86);
+    cursor: pointer;
+    /* 將滑鼠移入一般手勢改為變為選擇連線 */
+}
+
+
+/* 下面6行為強制將各種橫向解析度圖片置中的語法 */
+
+@media screen and (max-width: 1000px) {
+    /* 此語法為偵測瀏覽器螢幕寬度解析度 */
+    img.main-image {
+        left: 50%;
+        margin-left: -500px;
+    }
+}
+
+.login_layout {
+    width: 35%;
+    float: center;
+    text-align: center;
+    background-color: rgb(68, 73, 86, 0.8);
+    /* opacity: 0.5; */
+    border-radius: 10px !important;
+    box-shadow: 0px 0 8px -4px #000 !important;
+}
+
+@media all and (min-width:10px) and (max-width: 800px) {
+    .login_layout {
+        width: 100%;
+        left: 0px;
+    }
+}
+
+.form-login {
+    font-size: 5pt !important;
+    font-family: 微軟正黑體 !important;
+    width: 25%;
+}
+
+.form-font {
+    font-size: 5pt !important;
+    font-family: 微軟正黑體 !important;
+}
+
+.form-table {
+    width: 50%;
+    /* height: 50px; */
+    float: center;
+}
+
+
+/* 下方為使用Bootstrap的JS及CSS */
+
+.form-signin {
+    width: 80%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
+.form-signin .checkbox {
+    font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+    z-index: 2;
+}
+
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}

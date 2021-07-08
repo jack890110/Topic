@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<!-- ...註解 ... -->
+
+<html lang="zh-tw" >
+<head>
+    <meta charset="utf-8" />
+    <title>歡迎來到AI學習網站 -開始學習國小內容</title>
+    <link rel=stylesheet href=..\share\css\main.css>
+
+    
+    <style type="text/css">
+    body,td,th {
+	font-family: "微軟正黑體";
+}
+    </style>
+
+
+   <script>
+        function sampleMenu(item) {
+            var elem = document.getElementById('msg');
+            elem.innerHTML = item.innerText;
+            event.preventDefault();
+        }
+
+    </script>
+
+
+</head>
+<body>
+
+    <header class="menu">
+        <table width="100%" height="85px" border="0">
+            <tbody>
+                <tr>
+                    <td width="11%" nowrap="nowrap">
+                        <span class="logo">
+                            <a href="\main"><img src="..\static\image\lo.png" width="162" height="80" /></a>
+                        </span>
+                    </td>
+                    <td width="6%" nowrap="nowrap">
+                        <!-- 探索選單 -->
+                        <div class="sample-menu-style dropdown-menu">
+                            <button tabindex="0" onclick="return true" style="width:80px;height:50px;">探索 <img src="..\static\image\open.png" class="open-image" style="height:15px;width:15px;"></button>
+                            <!-- 探索選單內的項目 -->
+                            <ul>
+                                <li><a href="\elementary" onclick="sampleMenu(this)">國小</a></li>
+                                <li><a href="\intermediate" onclick="sampleMenu(this)">國中</a></li>
+                                <li><a href="#" onclick="sampleMenu(this)">Last Item</a></li>
+                            </ul>
+                        </div>
+
+                    </td>
+                    <td width="28%" nowrap="nowrap">
+
+                        <!-- 搜尋區域 -->
+                        <form id="form1" name="form1" method="post">
+
+                            <!-- 搜尋框 -->
+                            <input type="search" style="width:400px;height:30px" class="search-bar" placeholder="您想學習什麼?">
+
+                            <!-- 搜尋按鈕 -->
+                            <button type="button" class="search-button" style="width:30px;height:30px"><img src="..\static\image\serach.png" height="20" width="20"></button>
+                        </form>
+
+                    </td>
+                    <!-- 空白保留區域按鈕 -->
+                    <td width="45%" nowrap="nowrap"></td>
+
+                    <!-- 登入按鈕 -->
+                    <td width="3%" nowrap="nowrap">
+                        <a href="\login" style="color:#000000;text-decoration:none;">登入</a>
+                    </td>
+
+                    <!-- 立即加入(註冊)按鈕 -->
+                    <td width="7%" align="center" nowrap="nowrap">
+                        <a href="\login"><input class="register" type="button" value="立即加入" name="register" style="width:100px;height:50px;"></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </header>
+
+    <br>
+    <br>
+    <br>
+    <br>
+  
+
+    <h1>第一章:人工智慧故事</h1><p></p>
+    <div>
+        是不是有聽過.....「醫療科技智慧化，AI幫你治病」「AI時代，未來有一半工作將被取代」人工智慧(AI)在生活中已經有許多的應用，這些應用讓我們的生活更便利，AI還有哪些「神奇」的能力?讓我們一探索吧!
+    </div>
+    <div>
+        <h2>1-1生活中的人工智慧</h2>
+        隨著人工智慧技術的進步，電腦從只能快速執行單調的工作，發展至今，已經能夠完成許多複雜的智慧型工作並且在某方面表現得比人類更好、更有效率。<br>
+        生活中有許多人工智慧的運用，讓我們一起來看看吧!<br>
+        <font color="red">影像辨識: 「人臉辨識」、「車牌辨識」.....等等</font>
+        <br>
+
+        <mark> <b>人臉辨識</b></mark>:我們可以在電影中看到警方將嫌疑犯的照片輸入電腦，電腦就會自動比對資料庫中的影像資料，找出嫌疑犯的檔案。<br>
+        社群網站也有此項功能，當你朋友上傳照片，社群網站能自動標註照片中的人名。
+        <p></p>
+        <b>車牌辨識</b>:越來越多的停車場設有車牌辨識的設備，開車進入停車場前，不用搖下車窗取票，攝影機擷取汽車影像之後辨識車牌上傳至電腦，就能將汽車入場時間記錄下來。<br>
+        機關學校可利用類似的系統做門禁管制，警衛先生便不用一一檢查停車證，可節省時間讓交通更順暢。<br>
+        <font color="red">語音辨識: 「語音輸入」、「語音助理」.....等等</font><br>
+
+        <b> 語音輸入</b>:當我們手機與同學做文字上的對談或在社群軟體對話時，必須一直打字輸入訊息，會不會因為速度太慢而造成困擾?<br>
+        語音輸入能協助我們解決此問題，直接用講的讓手機轉成文字，也可以免去手動輸入的麻煩。<br>
+        <b>語音助理</b>:我們可以使用手機語音助理(例如Siri語音助理)，提供語音撥電話，以及語音問答<br>
+        ....等應用。讓我們看看以下對話:<br>
+        <font color="blue">老師:嗨，Siri打電話給許庭語。</font><br>
+
+
+
+    </div>
+
+
+</body>
+</html>

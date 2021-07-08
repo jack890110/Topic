@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- ...註解 ... -->
+
+<html lang="zh-tw" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>歡迎來到AI學習網站</title>
+    <link rel="stylesheet" href="http://127.0.0.1:5500/material/css/template.css" />
+    <link rel="stylesheet" href="http://127.0.0.1:5500/material/css/main/main.css" />
+    <script src="http://127.0.0.1:5500/material/js/header/header.js"></script>
+    <script src="http://127.0.0.1:5500/material/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        $(function() {
+            /*公共部分，頂部導航列*/
+            $(".headerpage").load("http://127.0.0.1:5500/web/header.html");
+            $(".footerpage").load("http://127.0.0.1:5500/web/footer.html");
+        });
+    </script>
+
+</head>
+
+<body class="main-body">
+    <header class="headerpage"></header>
+
+    <div class="square-frame"></div>
+    <div class="main-image"><img class="main-image" src="http://127.0.0.1:5500/material/image/main image/mainimg.jpg"></div>
+    <div class="main-title">即時師生互動平台
+        <br>最有趣的AI線上課程平台
+        <a href="http://127.0.0.1:5500/web/start/index.html"><input class="introduction-button" type="button" value="介紹" name="introduction"></a>
+    </div>
+
+
+    <nav id="menu">
+        <div class="inner">
+            <h2>選單</h2>
+            <ul class="links">
+                <li><a href="http://127.0.0.1:5500/web/main.html">首頁</a></li>
+                <li><a href="http://127.0.0.1:5500/web/start/index.html">介紹</a></li>
+                <li><a href="http://127.0.0.1:5500/web/learn/index.html">學習</a></li>
+                <li><a href="http://127.0.0.1:5500/web/member_center/member_center.html">註冊</a></li>
+                <li><a href="http://127.0.0.1:5500/web/member_center/member_center.html">登入</a></li>
+            </ul>
+            <a href="#" class="close">Close</a>
+        </div>
+    </nav>
+
+
+    <script src="http://127.0.0.1:5500/material/js/header/browser.min.js"></script>
+    <script src="http://127.0.0.1:5500/material/js/header/breakpoints.min.js"></script>
+    <script src="http://127.0.0.1:5500/material/js/header/main.js"></script>
+
+</body>
+
+</html>
