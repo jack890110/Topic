@@ -16,6 +16,7 @@ cursor = conn.cursor()
 #     print(str(row[0]) + ", " + str(row[1]) + ", " + str(row[2]) + ", " + str(row[3]) + ", " + str(row[4]) + ", " + str(row[5]))
 #     row = cursor.fetchone()
 
+#123456
 
 # 下8行為新建、插入1筆資料範例
 # cursor.execute(
