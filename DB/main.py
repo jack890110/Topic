@@ -71,40 +71,31 @@ def register():
 @app.route("/login" , methods=["POST"])
 def login():
     request_data = request.get_json()
-    email = request_data['email'] #email帳號
+    # email = request_data['email'] #email帳號
+    ID_number = request_data['ID_number'] #身分證字號
     password = request_data['password'] #使用者密碼
-    
     #查詢學生帳號電子郵件，傳回res
-    sql = f"SELECT [email] FROM [Topic_DB].[dbo].[Student_DB] WHERE email = '{email}'"
+    # sql = f"SELECT [email] FROM [Topic_DB].[dbo].[Student_DB] WHERE email = '{email}'"
+    sql = f"SELECT [ID_number] FROM [Topic_DB].[dbo].[Account_Number] WHERE ID_number = '{ID_number}'"
     res = db.select(sql)
 
-    #查詢老師帳號電子郵件，傳回res1
-    sql1 = f"SELECT [email] FROM [Topic_DB].[dbo].[Teach_DB] WHERE email = '{email}'"
-    res1 = db.select(sql1)
-
-    #判斷如果res或res1內陣列的長度為0時，無此帳號，請使用者建立新的帳號
-    print(res ,"學生")
-    print(res1,"老師")
-
-    if (len(res) == 0) and (len(res1) == 0):
+    #判斷如果res陣列的長度為0時，無此帳號，請使用者建立新的帳號
+    if len(res) == 0:
         #下面5行為SQL回傳至JSON API的值
         return_obj = {
             "status": 400,
-            "data": '查無此帳號，請確定輸入的Email是否正確'
+            "data": '查無此帳號，請確定輸入的身分證字號是否正確'
             }
-        print("查無此帳號，請確定輸入的Email是否正確，你輸入的Email是",email)
+        print("查無此帳號，請確定輸入的身分證字號是否正確，你輸入的身分證字號是",ID_number)
         return jsonify(return_obj)
     else:
         #尋找是否有相同的密碼，如果有的話res(學生)或res1(老師)陣列會產生內容，沒有則為0，在下面的if判斷判斷是否有陣列內容，
         #查詢學生帳號密碼，傳回res
-        sql = f"SELECT [password] FROM [Topic_DB].[dbo].[Student_DB] WHERE password = '{password}'"
+        sql = f"SELECT [password] FROM [Topic_DB].[dbo].[Account_Number] WHERE password = '{password}'"
         res = db.select(sql)
 
-        #查詢老師帳號密碼，傳回res1
-        sql1 = f"SELECT [password] FROM [Topic_DB].[dbo].[Teach_DB] WHERE password = '{password}'"
-        res1 = db.select(sql1)
         #判斷如果res內陣列的長度為0時，密碼錯誤，請使用者確認輸入密碼是否正確
-        if (len(res) == 0) and (len(res1) == 0):
+        if len(res) == 0:
             return_obj = {
                 "status": 400,
                 "data": '密碼錯誤，請確定輸入的密碼是否正確'
@@ -116,7 +107,7 @@ def login():
                 "status": 200,
                 "data": '登入成功'
             }
-            print("登入成功，您的電子郵件地址為",email)
+            print("登入成功，您的身分證字號為",ID_number)
             return jsonify(return_obj)
 
 
