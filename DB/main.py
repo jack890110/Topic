@@ -41,7 +41,6 @@ def register():
         result = db.query(sql)
         
         if(not(result)):
-            print("123123123")
             return_obj = {
             "status": 400,
             "data": '請檢察其他資訊然後再試一次。'
