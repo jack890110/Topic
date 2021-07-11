@@ -28,6 +28,7 @@ def register_student():
     
     change = int(change)
     
+    
     #尋找是否有相同的身分證，如果有的話res陣列會產生內容，沒有則為0，在下面的if判斷判斷是否有陣列內容，有陣列內容回報身分證已經註冊禁止註冊帳號
     sql = f"SELECT [ID_number] FROM [Topic_DB].[dbo].[Account_Number] WHERE id_number = '{ID_number}'"
     res = db.select(sql)
