@@ -8,72 +8,9 @@ import db
 # 此為Flask基本語法不可刪除
 app = Flask(__name__)
 
-# 註冊系統的SQL語法，已經全部完成
-@app.route("/register" , methods=["POST"])
-def register():
-    request_data = request.get_json()
-    #以下為學生及老師共通性帳號及密碼，身分證重複會無法建立帳號
-    email = request_data['email'] #email帳號
-    password = request_data['password'] #使用者密碼
-    #joinDate為註冊新帳號加入的時間，已於SQL方處理完成，此區不需寫入資料進去資料庫
-    ID_number = request_data['ID_number'] #身分證字號(資料庫主鍵)
-    change = request_data['change'] #寫入資料庫系統change等於0是學生，等於1是老師，等於3是業界人士
-    name = request_data['name']
-    phone = request_data['phone']
-    #下1行資料為老師獨有
-    # expertise = request_data['expertise']
-    #下2行資料為學生獨有
-    department = request_data['department']
-    grade = ['grade']
-    
-    change = int(change)
-    
-    #尋找是否有相同的身分證，如果有的話res陣列會產生內容，沒有則為0，在下面的if判斷判斷是否有陣列內容，有陣列內容回報身分證已經註冊禁止註冊帳號
-    sql = f"SELECT [ID_number] FROM [Topic_DB].[dbo].[Account_Number] WHERE id_number = '{ID_number}'"
-    res = db.select(sql)
-
-    #以下程式碼是註冊的使用者帳號相同
-    #判斷如果res內陣列的長度為0時，即可註冊，否則因身分證相同或其他問題無法註冊帳號
-    if res == []:
-        #change從JSON回傳為字串，必須轉成int型態才能使用
-        #進行註冊資料進入資料庫的語法
-        sql = "INSERT INTO [Topic_DB].[dbo].[Account_Number] ([change],[email],[password],[ID_number]) VALUES ('{0}', '{1}', '{2}', '{3}')".format(
-        change,
-        email,
-        password,
-        ID_number
-        )
-        #呼叫SQL副程式db.py檔案內的query副程式
-        result = db.query(sql)
-        if(not(result)):
-            return_obj = {
-            "status": 400,
-            "data": '請檢察其他資訊然後再試一次。'
-            #下一行為JSON格式範例"key:":{"key":'value' , "key2": 'value'}
-            #"data3": {"data2":'帳號建立成功~!'}
-            }
-            print("請檢察其他資訊然後再試一次。")
-            return jsonify(return_obj)
-    
-        #下面5行為SQL回傳至JSON API的值
-        return_obj = {
-            "status": 200,
-            "data": '恭喜您的帳號建立成功~!'
-        }
-        print("恭喜您的帳號建立成功，您的身分證為",ID_number)
-        return jsonify(return_obj)
-    else:#帳號重複，傳回重複帳號 
-        return_obj = {
-            "status": 400,
-            "data": '身分證字號已經重複，或發生其他問題，請更改其他名稱然後再試一次。'
-        }
-        print("帳號已經重複，或發生其他問題，請更改其他名稱然後再試一次。\n重複的身分證為",ID_number)
-        return jsonify(return_obj)
-
-
-# 註冊系統的SQL語法，測試中
-@app.route("/register2" , methods=["POST"])
-def register2():
+# 註冊學生系統的SQL語法，已完成
+@app.route("/register_student" , methods=["POST"])
+def register_student():
     request_data = request.get_json()
     #以下為學生及老師共通性帳號及密碼，身分證重複會無法建立帳號
     email = request_data['email'] #email帳號
@@ -84,12 +21,10 @@ def register2():
     name = request_data['name']
     phone = request_data['phone']
     school = request_data['school']
-    #下1行資料為老師獨有
-    # expertise = request_data['expertise']
-    #下2行資料為學生獨有
+    #下3行資料為學生獨有
     studentnumber = request_data['studentnumber']
     department = request_data['department']
-    grade = ['grade']
+    grade = request_data['grade']
     
     change = int(change)
     
@@ -100,6 +35,7 @@ def register2():
     #以下程式碼是註冊的使用者帳號相同
     #判斷如果res內陣列的長度為0時，即可註冊，否則因身分證相同或其他問題無法註冊帳號
     if res == []:
+        # 註冊學生帳號
         #change從JSON回傳為字串，必須轉成int型態才能使用
         #進行註冊資料進入資料庫的語法
         sql = "INSERT INTO [Topic_DB].[dbo].[Account_Number] ([ID_number],[email],[password],[change]) VALUES ('{0}', '{1}', '{2}', '{3}');\
@@ -119,7 +55,7 @@ def register2():
         
         #呼叫SQL副程式db.py檔案內的query副程式
         result = db.query(sql)
-        
+
         if(not(result)):
             return_obj = {
             "status": 400,
@@ -135,7 +71,7 @@ def register2():
             "status": 200,
             "data": '恭喜您的帳號建立成功~!'
         }
-        print("恭喜您的帳號建立成功，您的身分證為",ID_number)
+        print("恭喜您的帳號建立成功，您的身分證字號為",ID_number)
         return jsonify(return_obj)
     else:#帳號重複，傳回重複帳號 
         return_obj = {
@@ -145,7 +81,119 @@ def register2():
         print("帳號已經重複，或發生其他問題，請更改其他名稱然後再試一次。\n重複的身分證為",ID_number)
         return jsonify(return_obj)
 
+# 註冊老師系統的SQL語法，測試中
+@app.route("/register_teach" , methods=["POST"])
+def register_teach():
+    request_data = request.get_json()
+    email = request_data['email']
+    password = request_data['password']
+    #joinDate為註冊新帳號加入的時間，已於SQL方處理完成，此區不需寫入資料進去資料庫
+    ID_number = request_data['ID_number']
+    change = request_data['change']
+    name = request_data['name']
+    phone = request_data['phone']
+    school = request_data['school']
+    #下1行資料為老師獨有
+    expertise = request_data['expertise']
 
+    change = int(change)
+
+    sql = f"SELECT [ID_number] FROM [Topic_DB].[dbo].[Account_Number] WHERE id_number = '{ID_number}'"
+    res = db.select(sql)
+
+    if res == []:
+        sql = "INSERT INTO [Topic_DB].[dbo].[Account_Number] ([ID_number],[email],[password],[change]) VALUES ('{0}', '{1}', '{2}', '{3}');\
+        INSERT INTO [Topic_DB].[dbo].[Teach_DB] ([ID_number],[email],[name],[phone],[school],[expertise]) VALUES ('{0}','{1}','{4}','{5}','{6}','{7}')".format(
+        ID_number,
+        email,
+        password,
+        change,
+
+        name,
+        phone,
+        school,
+        expertise
+        )
+        
+        result = db.query(sql)
+
+        if(not(result)):
+            return_obj = {
+            "status": 400,
+            "data": '請檢察其他資訊然後再試一次。'
+            }
+            print("請檢察其他資訊然後再試一次。")
+            return jsonify(return_obj)
+        return_obj = {
+            "status": 200,
+            "data": '恭喜您的帳號建立成功~!'
+        }
+        print("恭喜您的帳號建立成功，您的身分證字號為",ID_number)
+        return jsonify(return_obj)
+    else:
+        return_obj = {
+            "status": 400,
+            "data": '身分證字號已經重複，或發生其他問題，請更改其他名稱然後再試一次。'
+        }
+        print("帳號已經重複，或發生其他問題，請更改其他名稱然後再試一次。\n重複的身分證為",ID_number)
+        return jsonify(return_obj)
+
+# 註冊業界人士系統的SQL語法，測試中
+@app.route("/register_industry_participant" , methods=["POST"])
+def register_industry_participant():
+    request_data = request.get_json()
+    email = request_data['email'] 
+    password = request_data['password']
+    #joinDate為註冊新帳號加入的時間，已於SQL方處理完成，此區不需寫入資料進去資料庫
+    ID_number = request_data['ID_number'] 
+    change = request_data['change'] 
+    name = request_data['name']
+    phone = request_data['phone']
+    school = request_data['school']
+    #下1行資料為業界人士獨有
+    expertise = request_data['expertise']
+
+    change = int(change)
+
+    sql = f"SELECT [ID_number] FROM [Topic_DB].[dbo].[Account_Number] WHERE id_number = '{ID_number}'"
+    res = db.select(sql)
+
+    if res == []:
+        sql = "INSERT INTO [Topic_DB].[dbo].[Account_Number] ([ID_number],[email],[password],[change]) VALUES ('{0}', '{1}', '{2}', '{3}');\
+        INSERT INTO [Topic_DB].[dbo].[Student_DB] ([ID_number],[email],[name],[phone],[expertise]) VALUES ('{0}','{1}','{4}','{5}','{6}')".format(
+        ID_number,
+        email,
+        password,
+        change,
+
+        name,
+        phone,
+        expertise
+        )
+        
+        result = db.query(sql)
+
+        if(not(result)):
+            return_obj = {
+            "status": 400,
+            "data": '請檢察其他資訊然後再試一次。'
+            }
+            print("請檢察其他資訊然後再試一次。")
+            return jsonify(return_obj)
+    
+        return_obj = {
+            "status": 200,
+            "data": '恭喜您的帳號建立成功~!'
+        }
+        print("恭喜您的帳號建立成功，您的身分證字號為",ID_number)
+        return jsonify(return_obj)
+    else:
+        return_obj = {
+            "status": 400,
+            "data": '身分證字號已經重複，或發生其他問題，請更改其他名稱然後再試一次。'
+        }
+        print("帳號已經重複，或發生其他問題，請更改其他名稱然後再試一次。\n重複的身分證為",ID_number)
+        return jsonify(return_obj)
 
 
 #登入系統的SQL語法，已全部完成
@@ -203,7 +251,75 @@ if __name__ == "__main__":
     app.run(debug=True)
 
 
+
+
+
+
+
 #舊程式碼
+
+# 單純的註冊系統的SQL語法，已經全部完成
+# @app.route("/register" , methods=["POST"])
+# def register():
+#     request_data = request.get_json()
+#     #以下為學生及老師共通性帳號及密碼，身分證重複會無法建立帳號
+#     email = request_data['email'] #email帳號
+#     password = request_data['password'] #使用者密碼
+#     #joinDate為註冊新帳號加入的時間，已於SQL方處理完成，此區不需寫入資料進去資料庫
+#     ID_number = request_data['ID_number'] #身分證字號(資料庫主鍵)
+#     change = request_data['change'] #寫入資料庫系統change等於0是學生，等於1是老師，等於3是業界人士
+#     name = request_data['name']
+#     phone = request_data['phone']
+#     #下1行資料為老師獨有
+#     # expertise = request_data['expertise']
+#     #下2行資料為學生獨有
+#     department = request_data['department']
+#     grade = ['grade']
+    
+#     change = int(change)
+    
+#     #尋找是否有相同的身分證，如果有的話res陣列會產生內容，沒有則為0，在下面的if判斷判斷是否有陣列內容，有陣列內容回報身分證已經註冊禁止註冊帳號
+#     sql = f"SELECT [ID_number] FROM [Topic_DB].[dbo].[Account_Number] WHERE id_number = '{ID_number}'"
+#     res = db.select(sql)
+
+#     #以下程式碼是註冊的使用者帳號相同
+#     #判斷如果res內陣列的長度為0時，即可註冊，否則因身分證相同或其他問題無法註冊帳號
+#     if res == []:
+#         #change從JSON回傳為字串，必須轉成int型態才能使用
+#         #進行註冊資料進入資料庫的語法
+#         sql = "INSERT INTO [Topic_DB].[dbo].[Account_Number] ([change],[email],[password],[ID_number]) VALUES ('{0}', '{1}', '{2}', '{3}')".format(
+#         change,
+#         email,
+#         password,
+#         ID_number
+#         )
+#         #呼叫SQL副程式db.py檔案內的query副程式
+#         result = db.query(sql)
+#         if(not(result)):
+#             return_obj = {
+#             "status": 400,
+#             "data": '請檢察其他資訊然後再試一次。'
+#             #下一行為JSON格式範例"key:":{"key":'value' , "key2": 'value'}
+#             #"data3": {"data2":'帳號建立成功~!'}
+#             }
+#             print("請檢察其他資訊然後再試一次。")
+#             return jsonify(return_obj)
+    
+#         #下面5行為SQL回傳至JSON API的值
+#         return_obj = {
+#             "status": 200,
+#             "data": '恭喜您的帳號建立成功~!'
+#         }
+#         print("恭喜您的帳號建立成功，您的身分證為",ID_number)
+#         return jsonify(return_obj)
+#     else:#帳號重複，傳回重複帳號 
+#         return_obj = {
+#             "status": 400,
+#             "data": '身分證字號已經重複，或發生其他問題，請更改其他名稱然後再試一次。'
+#         }
+#         print("帳號已經重複，或發生其他問題，請更改其他名稱然後再試一次。\n重複的身分證為",ID_number)
+#         return jsonify(return_obj)
+
 # 註冊一個帳號的SQL語法(已全部完成)
 # @app.route("/register" , methods=["POST"])
 # def register():
