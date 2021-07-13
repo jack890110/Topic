@@ -1,0 +1,55 @@
+.header {
+  margin-top: 20px;
+  margin-left: 100px;
+}
+
+ul li {
+  float: left;
+  margin-top: -55px;
+  margin-left: 800px;
+  width: 20%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: rgb(120, 133, 146);
+}
+
+/* 滑鼠滑過變色 */
+ul li:hover {
+  color: rgb(111, 236, 182);
+}
+.menu {
+  margin-top: 20px;
+  margin-left: 100px;
+}
+ul li ul li {
+  display: none;
+}
+ul li:hover ul li {
+  display: block;
+  float: none;
+  width: 100%;
+}
+.center {
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 100px;
+}
+.word {
+  font-size: 8px;
+  font-family: Microsoft JhengHei;
+  color: rgb(77, 72, 72);
+  font-weight: bold;
+}
+.main {
+  font-size: 24px;
+  color: rgb(77, 72, 72);
+  margin-bottom: 10px;
+}
+.ma {
+  margin-left: 110px;
+  color: rgb(77, 72, 72);
+  margin-top: 40px;
+  font-size: 24px;
+  font-weight: bold;
+}
